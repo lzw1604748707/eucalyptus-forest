@@ -1,9 +1,0 @@
-$primary-color: linear-gradient(#dbf5ff, #84ccf2);
-@import 'css-vars';
-$css-vars-use-native: true;
-@include css-vars(
-  (
-    --theme-primary: $primary-color,
-    --theme-shadow-primary: #fff
-  )
-);
