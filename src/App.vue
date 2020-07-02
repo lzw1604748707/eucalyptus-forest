@@ -12,6 +12,7 @@
         </v-row>
       </v-container>
     </v-main>
+    <app-footer class="app__footer"></app-footer>
   </v-app>
 </template>
 
@@ -23,7 +24,8 @@ export default Vue.extend({
 
   components: {
     appHeader: () => import('@/components/appHeader.vue'),
-    cardList: () => import('@/components/cardList.vue')
+    cardList: () => import('@/components/cardList.vue'),
+    appFooter: () => import('@/components/appFooter.vue')
   },
 
   data: () => ({
@@ -33,7 +35,7 @@ export default Vue.extend({
     generateParticle() {
       this.particleLine && (this.particleLine as typeof CanvasNest).destroy()
       const count = Math.ceil(window.innerWidth / 9)
-      this.particleLine = new CanvasNest((this.$refs.app as Vue).$el, {
+      this.particleLine = new CanvasNest(document.body, {
         color: '235,235,235',
         pointColor: '255,255,255',
         opacity: 0.8,
@@ -43,24 +45,23 @@ export default Vue.extend({
     }
   },
 
-  mounted() {
+  created() {
     this.generateParticle()
     window.onresize = this.generateParticle
   }
 })
 </script>
 <style lang="scss" scoped>
-$background-color: #001a37;
+@import '~@/scss/var.scss';
 #app {
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(
-    180deg,
-    $background-color 0%,
-    lighten($background-color, 10%) 100%
-  );
-  z-index: -2;
+  background: transparent;
   .app__header {
+    // background: lighten(rgba($background-color, 0.3), 20%);
+    background: lighten(rgba($background-color, 0.3), 20%);
+  }
+  .app__footer {
     background: lighten(rgba($background-color, 0.3), 20%);
   }
 }
