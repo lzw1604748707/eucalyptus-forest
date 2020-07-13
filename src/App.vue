@@ -58,7 +58,6 @@ export default Vue.extend({
   height: 100vh;
   background: transparent;
   .app__header {
-    // background: lighten(rgba($background-color, 0.3), 20%);
     background: lighten(rgba($background-color, 0.3), 20%);
   }
   .app__footer {
