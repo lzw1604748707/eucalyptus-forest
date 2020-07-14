@@ -16,10 +16,11 @@ before_install:
     -in deploy__key.enc -out ~/.ssh/id_rsa -d
 after_success:
   - chmod 600 ~/.ssh/id_rsa
-  - cd ./dist
-  - git init
-  - git config user.name "travis"
-  - git config user.email "travis"
-  - git add .
-  - git commit -m "update deploy"
-  - git push --force git@github.com:lzw1604748707/anshuye-server-ts.git master:deploy
+  - ssh root@$SERVERIP -o StrictHostKeyChecking=no 'cd {$SERVERDIR} && git pull && npm install && npm run build'
+  # - cd ./dist
+  # - git init
+  # - git config user.name "travis"
+  # - git config user.email "travis"
+  # - git add .
+  # - git commit -m "update deploy"
+  # - git push --force git@github.com:lzw1604748707/anshuye-server-ts.git master:deploy
