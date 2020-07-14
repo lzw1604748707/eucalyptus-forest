@@ -21,4 +21,4 @@ after_success:
   - git config user.email "travis"
   - git add .
   - git commit -m "更新部署"
-  - git push --force --quiet origin master:deploy
+  - git push --force  origin master:deploy
