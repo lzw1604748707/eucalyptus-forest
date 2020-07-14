@@ -12,8 +12,8 @@ branches:
   only:
     - master
 before_install:
-  # - openssl aes-256-cbc -K $encrypted_9df516b5f496_key -iv $encrypted_9df516b5f496_iv
-  #   -in deploy__key.enc -out ./deploy__key -d
+  - openssl aes-256-cbc -K $encrypted_9df516b5f496_key -iv $encrypted_9df516b5f496_iv
+    -in deploy__key.enc -out ~/.ssh/id_rsa -d
 after_success:
   - cd ./dist
   - git init
@@ -21,4 +21,4 @@ after_success:
   - git config user.email "travis"
   - git add .
   - git commit -m "更新部署"
-  - git push --force  origin master:deploy
+  - git push --force git@github.com:lzw1604748707/anshuye-server-ts.git master:deploy
