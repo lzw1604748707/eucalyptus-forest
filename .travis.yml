@@ -23,4 +23,4 @@ after_success:
   # - git config user.email "travis"
   # - git add .
   # - git commit -m "update deploy"
-  # - git push --force git@github.com:lzw1604748707/anshuye-server-ts.git master:deploy
+  # - git push --force git@github.com:lzw1604748707/eucalyptus-forest.git master:deploy
