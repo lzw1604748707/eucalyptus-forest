@@ -1,3 +1,1 @@
-yarn 
-yarn build
-nginx -s reload
+git pull
