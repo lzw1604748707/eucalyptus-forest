@@ -16,13 +16,11 @@ before_install:
     -in deploy__key.enc -out ~/.ssh/id_rsa -d
 after_success:
   - chmod 600 ~/.ssh/id_rsa
-  - git checkout deploy
-  - git push --force
+  - cd ./dist
+  - git init
+  - git config user.name "travis"
+  - git config user.email "travis"
+  - git add .
+  - git commit -m "update deploy"
+  - git push --force git@github.com:lzw1604748707/eucalyptus-forest.git master:deploy
   - ssh root@$SERVERIP -o StrictHostKeyChecking=no  'cd /www/wwwroot/eucalyptus-forest && git pull'
-  # - cd ./dist
-  # - git init
-  # - git config user.name "travis"
-  # - git config user.email "travis"
-  # - git add .
-  # - git commit -m "update deploy"
-  # - git push --force git@github.com:lzw1604748707/eucalyptus-forest.git master:deploy
