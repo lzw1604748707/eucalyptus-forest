@@ -35,6 +35,7 @@ export default Vue.extend({
     generateParticle() {
       this.particleLine && (this.particleLine as typeof CanvasNest).destroy()
       const count = Math.ceil(window.innerWidth / 9)
+
       this.particleLine = new CanvasNest(document.body, {
         color: '235,235,235',
         pointColor: '255,255,255',
@@ -45,7 +46,7 @@ export default Vue.extend({
     }
   },
 
-  created() {
+  mounted() {
     this.generateParticle()
     window.onresize = this.generateParticle
   }
